@@ -1,0 +1,25 @@
+{
+  "name": "com.notepad",
+  "version": "1.0.0",
+  "description": "This is a user based notepad",
+  "keywords": [
+    "Notepad",
+    "notes",
+    "cloud"
+  ],
+  "license": "ISC",
+  "author": "Basudeb Paul Chowdhury",
+  "type": "module",
+  "main": "src/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/main.js",
+    "dev": "nodemon src/main.js"
+  },
+  "dependencies": {
+    "dotenv": "^18.0.9",
+    "express": "^5.3.0",
+    "mysql2": "^3.24.6",
+    "nodemon": "^3.1.14"
+  }
+}
