@@ -1,15 +1,13 @@
 import express from 'express';
-
+import userRoute from './routes/user.route.js';
 const app = express();
 const port = 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/', (req, res) => {
-    res.send('Notepad server started...');
-});
+app.use("/api/v1/user", userRoute);
+
 
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`);
+    console.log("Server running at http://localhost:${" + port + "}");
 });
-
