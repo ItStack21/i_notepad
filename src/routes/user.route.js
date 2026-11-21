@@ -1,64 +1,19 @@
 import express from 'express';
+import UserController from '../controller/user.controller.js';
 const router = express.Router();
 
-router.post('/register', (req, res) => {
-    const user_name = req.body.name;
-    const user_email = req.body.email;
-    const user_password = req.body.password;
-
-    console.log({
-        "USER NAME : ": user_name,
-        "USER EMAIL : ": user_email,
-        "PASSWORD : ": user_password
-    });
-
-    res.send("ACCOUNT REGISTERED!!")
-});
-
-router.post('/login', (req, res) => {
-    const user_email = req.body.email;
-    const user_password = req.body.password;
-
-    console.log({
-        "USER EMAIL : ": user_email,
-        "PASSWORD : ": user_password
-    });
-
-    res.send("ACCOUNT REGISTERED!!")
-});
+router.post('/register', UserController.createUser);
+router.post('/login', UserController.loginUser)
 
 
 
-router.get('/profile', (req, res) => {
-
-});
+router.get('/profile', UserController.getMyProfile)
 
 
-
-router.patch('/update', (req, res) => {
-    const user_email = req.body.email;
-    const user_password = req.body.password;
-
-    console.log({
-        "USER EMAIL : ": user_email,
-        "PASSWORD : ": user_password
-    });
-
-    res.send("ACCOUNT REGISTERED!!")
-});
+router.patch('/update', UserController.updateProfile)
 
 
-router.delete('/delete', (req, res) => {
-    const user_email = req.body.email;
-    const user_password = req.body.password;
-
-    console.log({
-        "USER EMAIL : ": user_email,
-        "PASSWORD : ": user_password
-    });
-
-    res.send("ACCOUNT REGISTERED!!")
-});
+router.delete('/delete', UserController.deleteUser)
 
 
 
