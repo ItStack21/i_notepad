@@ -1,10 +1,7 @@
 import Response from "../utils/response.utils.js";
 import statusCodeUtils from "../utils/statusCode.utils.js";
-const existing_email = [
-    "bpaulc21@gmail.com",
-    "abcd@gmail.com",
-    "admin@gmail.com"
-]
+import User from "../model/user.model.js";
+
 const UserController = {
 
     async createUser(req, res) {
@@ -26,7 +23,7 @@ const UserController = {
             )
         }
 
-        if (existing_email.includes(user_email)) {
+        if (await User.findByEmail(user_email) != null) {
             return Response.error(
                 res,
                 statusCodeUtils.CONFLICT,
@@ -42,13 +39,13 @@ const UserController = {
             )
         }
         // Database Save
+        const result = User.createNewUser(user_name, user_email, user_password);
         return Response.success(
             res,
             statusCodeUtils.CREATED,
             "User created successfully!!",
             {
-                "user_name": user_name,
-                "email": user_email
+                result
             }
         )
 
